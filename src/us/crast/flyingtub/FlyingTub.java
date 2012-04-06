@@ -27,7 +27,7 @@ public class FlyingTub extends JavaPlugin {
 		log.info("Disabling FlyingTub: Tubs can no longer fly :(");
 	}
 
-	public FTConfig getFTConfig() {
+	public final FTConfig getFTConfig() {
 		return this.config;
 	}
 }
