@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class FlyingTub extends JavaPlugin {
 	private FTConfig config;
 	public PluginManager pluginManager;
-	public Logger log;
+	private Logger log;
 
 	public void onEnable() {
 	    this.log = getLogger();
@@ -29,9 +29,5 @@ public class FlyingTub extends JavaPlugin {
 
 	public FTConfig getFTConfig() {
 		return this.config;
-	}
-
-	public Logger getLogger() {
-		return this.log;
 	}
 }
