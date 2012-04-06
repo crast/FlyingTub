@@ -1,0 +1,12 @@
+# these settings will control minecart flight.
+# The speed of the cart while in flight is multiplied by  vector 
+# with X/Z coordinates being the horizontal and Y being the vertical modifier.
+speed:
+    # this controls the rate at which the minecart slows down horizontally.
+    horizontal: 10
+    # this controls how fast the minecart will fall while in flight.
+    # NOTE Minecarts still fall even with vertical of zero, just very slowly.
+    vertical: 0.5
+
+# If true, then you will not take fall damage in a minecart.
+prevent_damage: false
