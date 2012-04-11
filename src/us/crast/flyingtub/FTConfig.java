@@ -1,15 +1,18 @@
 package us.crast.flyingtub;
 
 import java.io.File;
+import java.util.logging.Logger;
 
 public final class FTConfig {
-	public static final String FLYINGTUB_VERSION = "0.1";
+	public static final String FLYINGTUB_VERSION = "0.2";
 	
-    private final double horizontal;
-	private final double vertical;
+    private double horizontal;
+	private double vertical;
 	private final boolean prevent_damage;
+    private final Logger logger;
 
 	public FTConfig(FlyingTub plugin) {
+	    this.logger = plugin.getLogger();
 		File dataFolder = plugin.getDataFolder();
 		dataFolder.mkdir();
 
@@ -26,11 +29,24 @@ public final class FTConfig {
 	public final double horizontalSpeed() {
 		return this.horizontal;
 	}
+	
+	public final void setHorizontalSpeed(double horizontalSpeed) {
+	    this.horizontal = horizontalSpeed;
+	}
+	
 	public final double verticalSpeed() {
 		return this.vertical;
+	}
+	
+	public final void setVerticalSpeed(double verticalSpeed) {
+	    this.vertical = verticalSpeed;
 	}
 	
 	public final boolean preventDamage() {
 		return this.prevent_damage;
 	}
+
+    public Logger getLogger() {
+        return logger;
+    }
 }

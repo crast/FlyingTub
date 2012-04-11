@@ -1,5 +1,20 @@
-main: us.crast.flyingtub.FlyingTub
 name: FlyingTub
+version: 0.2
 author: Crast
+main: us.crast.flyingtub.FlyingTub
 description: A more modern attempt at CartJump
-version: 0.1
+website: "http://dev.bukkit.org/server-mods/flyingtub/"
+
+permissions:
+    flyingtub.admin:
+        description: "Use of the /flyingtub command"
+        default: op
+
+commands:
+    flyingtub:
+        description: "FlyingTub configuration"
+        aliases: [tub]
+        permission: flyingtub.admin
+        permission-message: "You do not have <permission>"
+        usage: "Usage: /<command> save or /<command> horizontal <number> or /<command> vertical <number>"
+# vim: ts=4 sw=4 sts=4 expandtab

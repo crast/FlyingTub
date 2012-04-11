@@ -10,7 +10,6 @@ import org.bukkit.event.vehicle.VehicleEnterEvent;
 import org.bukkit.util.Vector;
 
 public final class TubFlightListener implements Listener {
-
 	private final FTConfig config;
     private Vector desiredVelocityMod;
 
@@ -19,7 +18,7 @@ public final class TubFlightListener implements Listener {
 		this.setup();
 	}
 	
-	private void setup() {
+	public void setup() {
 	    desiredVelocityMod = new Vector(
 	            this.config.horizontalSpeed(), 
 	            this.config.verticalSpeed(), 
@@ -27,12 +26,12 @@ public final class TubFlightListener implements Listener {
 	    );
 	}
 	
-	@EventHandler
+	@EventHandler(ignoreCancelled=true)
 	public final void onVehicleEnter(VehicleEnterEvent event) {
 		fixCart(event.getVehicle());
 	}
 	
-	@EventHandler
+	@EventHandler(ignoreCancelled=true)
 	public final void onVehicleCreate(VehicleCreateEvent event) {
 		fixCart(event.getVehicle());
 	}

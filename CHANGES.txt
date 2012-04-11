@@ -1,0 +1,5 @@
+Version 0.2: 2012-04-10
+ * Added /flyingtub command to allow the horizontal/vertical values to be changed at runtime
+
+Version 0.1: 2012-04-06
+ * Initial Release
