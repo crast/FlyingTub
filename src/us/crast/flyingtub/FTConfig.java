@@ -3,8 +3,10 @@ package us.crast.flyingtub;
 import java.io.File;
 import java.util.logging.Logger;
 
+import org.bukkit.configuration.file.FileConfiguration;
+
 public final class FTConfig {
-	public static final String FLYINGTUB_VERSION = "0.2";
+	public static final String FLYINGTUB_VERSION = "0.3-pre1";
 	
     private double horizontal;
 	private double vertical;
@@ -48,5 +50,10 @@ public final class FTConfig {
 
     public Logger getLogger() {
         return logger;
+    }
+    
+    public void copyToYaml(FileConfiguration config) {
+        config.set("speed.horizontal", this.horizontal);
+        config.set("speed.vertical", this.vertical);
     }
 }

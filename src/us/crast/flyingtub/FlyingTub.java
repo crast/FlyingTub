@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,7 +20,7 @@ public class FlyingTub extends JavaPlugin {
 		this.config = new FTConfig(this);
 		this.listener = new TubFlightListener(this);
 
-		PluginManager pm = getServer().getPluginManager();
+		final PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this.listener, this);
 		
 		if (config.preventDamage()) {
@@ -45,6 +44,7 @@ public class FlyingTub extends JavaPlugin {
             return false;
         }
         if (args[0].equals("save")) {
+            this.config.copyToYaml(getConfig());
             saveConfig();
             sender.sendMessage(ChatColor.RED + "Save not yet implemented");
         } else if (args.length != 2) {

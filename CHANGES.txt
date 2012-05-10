@@ -1,3 +1,7 @@
+Version 0.3: Not yet released
+ * /flyingtub save should actually save stuff
+ * More performance tweaks
+
 Version 0.2: 2012-04-10
  * Added /flyingtub command to allow the horizontal/vertical values to be changed at runtime
 
