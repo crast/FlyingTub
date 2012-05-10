@@ -5,7 +5,7 @@ speed:
     # this controls the rate at which the minecart slows down horizontally.
     # NOTE the minecart will still not travel faster than 8 m/s so horizontal 
     # velocity mod > 10 or so won't do much.
-    horizontal: 10
+    horizontal: 1.1
     # this controls how fast the minecart will fall while in flight.
     # NOTE Minecarts still fall even with vertical of zero, just very slowly.
     vertical: 0.5
