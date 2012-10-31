@@ -1,5 +1,5 @@
 name: FlyingTub
-version: 0.2
+version: 0.3
 author: Crast
 main: us.crast.flyingtub.FlyingTub
 description: A more modern attempt at CartJump

@@ -9,7 +9,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class FlyingTub extends JavaPlugin {
-	private FTConfig config;
+	private FTConfig ftConfig;
 	public PluginManager pluginManager;
 	private TubFlightListener listener;
 	private Logger log;
@@ -17,18 +17,23 @@ public class FlyingTub extends JavaPlugin {
 	@Override
 	public void onEnable() {
 	    this.log = getLogger();
-		this.config = new FTConfig(this);
+		this.ftConfig = new FTConfig(this);
 		this.listener = new TubFlightListener(this);
 
 		final PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this.listener, this);
 		
-		if (config.preventDamage()) {
+		if (ftConfig.preventDamage()) {
 			pm.registerEvents(new DamageListener(), this);
 		}
 		getCommand("flyingtub").setExecutor(this);
 		log.info(String.format("FlyingTub version %s enabled", FTConfig.FLYINGTUB_VERSION));
 	}
+	
+    @Override
+    public void onDisable() {
+        log.info("Disabling FlyingTub: Tubs can no longer fly :(");
+    }
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
@@ -37,25 +42,25 @@ public class FlyingTub extends JavaPlugin {
                     "%sFlyingTub: %sHorizontal=%s%f %sVertical=%s%f",
                     ChatColor.GOLD,
                     ChatColor.AQUA,
-                    ChatColor.GREEN, this.config.horizontalSpeed(),
+                    ChatColor.GREEN, this.ftConfig.horizontalSpeed(),
                     ChatColor.AQUA,
-                    ChatColor.GREEN, this.config.verticalSpeed()
+                    ChatColor.GREEN, this.ftConfig.verticalSpeed()
             ));
             return false;
         }
         if (args[0].equals("save")) {
-            this.config.copyToYaml(getConfig());
+            this.ftConfig.copyToYaml(getConfig());
             saveConfig();
-            sender.sendMessage(ChatColor.RED + "Save not yet implemented");
+            sender.sendMessage(ChatColor.GREEN + "Configuration Saved");
         } else if (args.length != 2) {
             return false;
         } else {
             try {
                 double parsedval = Double.parseDouble(args[1]);
                 if (args[0].equals("horizontal")) {
-                    this.config.setHorizontalSpeed(parsedval);
+                    this.ftConfig.setHorizontalSpeed(parsedval);
                 } else if (args[0].equals("vertical")) {
-                    this.config.setVerticalSpeed(parsedval);
+                    this.ftConfig.setVerticalSpeed(parsedval);
                 } else {
                     return false;
                 }
@@ -68,12 +73,7 @@ public class FlyingTub extends JavaPlugin {
         return true;
 	}
 
-    @Override
-	public void onDisable() {
-		log.info("Disabling FlyingTub: Tubs can no longer fly :(");
-	}
-
 	public final FTConfig getFTConfig() {
-		return this.config;
+		return this.ftConfig;
 	}
 }

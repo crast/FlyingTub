@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public final class FTConfig {
-	public static final String FLYINGTUB_VERSION = "0.3-pre1";
+	public static final String FLYINGTUB_VERSION = "0.3";
 	
     private double horizontal;
 	private double vertical;
