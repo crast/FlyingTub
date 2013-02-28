@@ -1,4 +1,3 @@
 #!/bin/bash
-cd bin
-cp ../plugin.yml ../config.yml .
-jar cvf ../FlyingTub.jar .
+mvn package
+mv target/FlyingTub-*.jar FlyingTub.jar

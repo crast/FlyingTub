@@ -1,0 +1,17 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Java dirs
+bin/
+target/
+
+# Misc files
+*.swp
+.project
+.classpath
+makejar.sh
+.settings
