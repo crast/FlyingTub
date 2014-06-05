@@ -12,3 +12,13 @@ speed:
 
 # If true, then you will not take fall damage in a minecart.
 prevent_damage: false
+
+
+## Use this to configure what happens when a minecart is empty or you exit it.
+empty_speed:
+    # If enabled is not set, ignore this section.
+    enabled: false
+
+    # Set horizontal/vertical speeds.
+    horizontal: 0.95
+    vertical: 0.95

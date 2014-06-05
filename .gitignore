@@ -15,3 +15,7 @@ target/
 .classpath
 makejar.sh
 .settings
+
+#IntelliJ
+.idea
+FlyingTub.iml

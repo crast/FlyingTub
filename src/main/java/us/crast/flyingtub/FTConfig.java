@@ -3,14 +3,17 @@ package us.crast.flyingtub;
 import java.io.File;
 import java.util.logging.Logger;
 
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public final class FTConfig {
 	public static final String FLYINGTUB_VERSION = "0.3";
-	
+
     private double horizontal;
 	private double vertical;
-	private final boolean prevent_damage;
+    private double exitedHorizontal;
+    private double exitedVertical;
+	private boolean prevent_damage;
     private final Logger logger;
 
 	public FTConfig(FlyingTub plugin) {
@@ -23,10 +26,18 @@ public final class FTConfig {
 		if (!configFile.exists()) {
 			plugin.saveDefaultConfig();
 		}
-		this.horizontal = plugin.getConfig().getDouble("speed.horizontal");
-		this.vertical = plugin.getConfig().getDouble("speed.vertical");
-		this.prevent_damage = plugin.getConfig().getBoolean("prevent_damage");
+        configure(plugin.getConfig());
 	}
+
+    private void configure(ConfigurationSection section) {
+        this.horizontal = this.exitedHorizontal = section.getDouble("speed.horizontal");
+        this.vertical = this.exitedVertical = section.getDouble("speed.vertical");
+        this.prevent_damage = section.getBoolean("prevent_damage");
+        if (section.getBoolean("empty_speed.enabled")) {
+            this.exitedHorizontal = section.getDouble("empty_speed.horizontal");
+            this.exitedVertical = section.getDouble("empty_speed.vertical");
+        }
+    }
 
 	public final double horizontalSpeed() {
 		return this.horizontal;
@@ -47,6 +58,10 @@ public final class FTConfig {
 	public final boolean preventDamage() {
 		return this.prevent_damage;
 	}
+
+    public double exitedHorizontalSpeed() { return this.exitedHorizontal; }
+
+    public double exitedVerticalSpeed() { return this.exitedVertical; }
 
     public Logger getLogger() {
         return logger;
